@@ -4,7 +4,8 @@ from octoprint.events import eventManager, Events
 from octoprint.util import RepeatedTimer
 from subprocess import Popen, PIPE
 import octoprint.plugin
-import RPi.GPIO as GPIO
+import orangepi.pc
+from OPi import GPIO
 import flask
 import time
 import sys
@@ -845,13 +846,13 @@ class EnclosurePlugin(octoprint.plugin.StartupPlugin,
                 gpios = outputs + inputs
                 if gpios:
                     GPIO.setmode(set_mode)
-                    tempstr = "BOARD" if set_mode == GPIO.BOARD else "BCM"
+                    tempstr = "BOARD" if set_mode == orangepi.pc.BOARD else "BCM"
                     self._logger.info("Setting GPIO mode to %s", tempstr)
             elif current_mode != set_mode:
                 GPIO.setmode(current_mode)
-                tempstr = "BOARD" if current_mode == GPIO.BOARD else "BCM"
+                tempstr = "BOARD" if current_mode == orangepi.pc.BOARD else "BCM"
                 self._settings.set(["use_board_pin_number"],
-                                   True if current_mode == GPIO.BOARD else False)
+                                   True if current_mode == orangepi.pc.BOARD else False)
                 warn_msg = "GPIO mode was configured before, GPIO mode will be forced to use: " + \
                     tempstr + " as pin numbers. Please update GPIO accordingly!"
                 self._logger.info(warn_msg)
