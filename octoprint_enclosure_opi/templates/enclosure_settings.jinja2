@@ -1,4 +1,4 @@
-<h4>{{ _('Raspberry Pi Outputs') }}</h4>
+<h4>{{ _('Orange Pi Outputs') }}</h4>
 <p>
   Configure all
   <strong>outputs</strong>. Outputs can be everything that do actions based on UI button presses or automatic events or alarms.
@@ -202,7 +202,7 @@
           <input type="text" class="input-block-level" data-bind="value: startup_time">
           <span class="help-inline">Time delay in secconds to turn on GPIO when print starts OR exact time that the event should happen, note that
             events will only be scheduled after a print starts, time should be formated as HH:MM on a 24 hours format, don't
-            forget to check timezone of your Raspberry Pi.</span>
+            forget to check timezone of your Orange Pi.</span>
         </div>
       </div>
     </div>
@@ -235,7 +235,7 @@
           <input type="text" class="input-block-level" data-bind="value: shutdown_time">
           <span class="help-inline">Time delay in secconds to turn on GPIO when print starts OR exact time that the event should happen, note that
             events will only be scheduled after a print starts, time should be formated as HH:MM on a 24 hours format, don't
-            forget to check timezone of your raspberry pi.</span>
+            forget to check timezone of your Orange pi.</span>
           <span class="label label-important">Attention</span>
           <span> Hour schedule does not work with
             <b>Link PWM to Temperature</b> option</span>
@@ -400,7 +400,7 @@
       <div class="controls">
         <input type="text" class="input-block-level" data-bind="value: microcontroller_address">
         <span class="help-inline">Microcontroller address in HEX value, you can find it by runing
-          <code>i2cdetect -y 1</code> on your Raspberry Pi</span>
+          <code>i2cdetect -y 1</code> on your Orange Pi</span>
       </div>
     </div>
     <!-- /ko -->
@@ -453,7 +453,7 @@
     <button class="btn pull-right" data-bind="click: function() { $root.addRpiOutput(); }">Add Outputs...</button>
   </div>
 </form>
-<h4>{{ _('Raspberry Pi Inputs') }}</h4>
+<h4>{{ _('Orange Pi Inputs') }}</h4>
 <p>
   Configure all
   <strong>inputs</strong>. Inputs get data from gpio or connected sensors to provide additional functionality. Inputs can control
@@ -547,7 +547,7 @@
         <div class="controls">
           <input type="text" class="input-block-level" data-bind="value: temp_sensor_address">
           <span class="help-inline">Sensor address in HEX value, you can find it by runing
-            <code>i2cdetect -y 1</code> on your Raspberry Pi</span>
+            <code>i2cdetect -y 1</code> on your Orange Pi</span>
         </div>
       </div>
       <!-- /ko -->
