@@ -528,9 +528,8 @@ class EnclosurePlugin(octoprint.plugin.StartupPlugin,
             if self.development_mode:
                 temp, hum = self.read_dummy_temp()
             else:
-                if sensor['temp_sensor_type'] in ["11", "22", "2302"]:
-                    temp, hum = self.read_dht_temp(
-                        sensor['temp_sensor_type'], sensor['gpio_pin'])
+                if sensor['temp_sensor_type'] in ["22", "2302"]:
+                    temp, hum = self.read_dht_temp()
                 elif sensor['temp_sensor_type'] == "18b20":
                     temp = self.read_18b20_temp(sensor['ds18b20_serial'])
                     hum = 0
@@ -589,15 +588,15 @@ class EnclosurePlugin(octoprint.plugin.StartupPlugin,
 
         return return_value, return_value
 
-    def read_dht_temp(self, sensor, pin):
+    def read_dht_temp(self):
         try:
             script = os.path.dirname(
-                os.path.realpath(__file__)) + "/getDHTTemp.py "
+                os.path.realpath(__file__)) + "/read_dht22.py "
             if self._settings.get(["use_sudo"]):
                 sudo_str = "sudo "
             else:
                 sudo_str = ""
-            cmd = sudo_str + "python " + script + str(sensor) + " " + str(pin)
+            cmd = sudo_str + "python " + script
             if self._settings.get(["debug"]) is True and self._settings.get(["debug_temperature_log"]) is True:
                 self._logger.info("Temperature dht cmd: %s", cmd)
             stdout = (Popen(cmd, shell=True, stdout=PIPE).stdout).read()
